@@ -14,6 +14,10 @@ public class StringCalculator {
             return Integer.parseInt(numberArray[0]);
         }
 
-        return Integer.parseInt(numberArray[0]) + Integer.parseInt(numberArray[1]);
+        if (numberArray.length == 2) {
+            return Integer.parseInt(numberArray[0]) + Integer.parseInt(numberArray[1]);
+        }
+
+        return Integer.parseInt(numberArray[0]) + Integer.parseInt(numberArray[1]) + Integer.parseInt(numberArray[2]);
     }
 }
