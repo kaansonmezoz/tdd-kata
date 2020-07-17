@@ -9,15 +9,17 @@ public class StringCalculator {
         }
 
         String[] numberArray = numbers.split(",");
+        int total = Integer.parseInt(numberArray[0]);
 
         if (numberArray.length == 1) {
-            return Integer.parseInt(numberArray[0]);
+            return total;
         }
 
+        total += Integer.parseInt(numberArray[1]);
         if (numberArray.length == 2) {
-            return Integer.parseInt(numberArray[0]) + Integer.parseInt(numberArray[1]);
+            return total;
         }
 
-        return Integer.parseInt(numberArray[0]) + Integer.parseInt(numberArray[1]) + Integer.parseInt(numberArray[2]);
+        return total + Integer.parseInt(numberArray[2]);
     }
 }
