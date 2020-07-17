@@ -1,10 +1,18 @@
 package com.sonmezoz.kaan.kata.tdd.case1;
 
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class StringCalculatorTest {
+    private StringCalculator calculator;
+
+    @BeforeEach
+    public void setup() {
+        calculator = new StringCalculator();
+    }
+
 
     // TODO: 17.07.2020 1) Given empty string as parameter When add() is called Then it should return 0 +
     // TODO: 17.07.2020 2) Given "1"  When add() is called Then it should return 1
@@ -28,9 +36,8 @@ public class StringCalculatorTest {
     // TODO: 17.07.2020 “//[**][%%]\n1**2%%3” == 6
 
     @Test
-    public void add_shouldReturn_0_when_empty_string_passed(){
+    public void add_shouldReturn_0_when_empty_string_passed() {
         // given
-        StringCalculator calculator = new StringCalculator();
         String numbers = "";
 
         // when
@@ -38,5 +45,18 @@ public class StringCalculatorTest {
 
         // then
         assertEquals(0, actual);
+    }
+
+    @Test
+    public void add_shouldReturn_passed_number_when_only_1_number_is_passed() {
+        // given
+        String numbers = "1";
+        int expected = Integer.parseInt(numbers);
+
+        // when
+        int actual = calculator.add(numbers);
+
+        // then
+        assertEquals(expected, actual);
     }
 }

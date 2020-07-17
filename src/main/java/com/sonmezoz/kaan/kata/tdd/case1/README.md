@@ -6,6 +6,8 @@ This Kata is taken from [Roy Osherove](https://osherove.com/tdd-kata-1).
 - Red -> Green -> Refactor
 - Don't forget to test after refactor.
 - Always code minimum to pass & fail tests.
+- Don't Modify Previous Tests in order to make them pass. Unless method signature is changed, then do related changes to 
+  make test pass.
 
 
 #### Scenario
