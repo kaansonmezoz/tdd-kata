@@ -15,7 +15,7 @@ public class StringCalculatorTest {
 
 
     // TODO: 17.07.2020 1) Given empty string as parameter When add() is called Then it should return 0 +
-    // TODO: 17.07.2020 2) Given "1"  When add() is called Then it should return 1
+    // TODO: 17.07.2020 2) Given "1"  When add() is called Then it should return 1 +
     // TODO: 17.07.2020 3) Given "1,2" When add() is called Then it should return 3
     // TODO: 17.07.2020 4) Given "1,2,3" When add() is called Then it should return 6
     // TODO: 17.07.2020 5) Given unlimited amount of numbers When add() is called Then it should return sum of them
@@ -36,7 +36,7 @@ public class StringCalculatorTest {
     // TODO: 17.07.2020 “//[**][%%]\n1**2%%3” == 6
 
     @Test
-    public void add_shouldReturn_0_when_empty_string_passed() {
+    void add_shouldReturn_0_when_empty_string_passed() {
         // given
         String numbers = "";
 
@@ -48,10 +48,23 @@ public class StringCalculatorTest {
     }
 
     @Test
-    public void add_shouldReturn_passed_number_when_only_1_number_is_passed() {
+    void add_shouldReturn_passed_number_when_only_1_number_is_passed() {
         // given
         String numbers = "1";
         int expected = Integer.parseInt(numbers);
+
+        // when
+        int actual = calculator.add(numbers);
+
+        // then
+        assertEquals(expected, actual);
+    }
+
+    @Test
+    void add_shouldReturn_sum_of_two_numbers_when_two_numbers_passed_with_comma_delimiter() {
+        // given
+        String numbers = "1,2";
+        int expected = 3;
 
         // when
         int actual = calculator.add(numbers);
