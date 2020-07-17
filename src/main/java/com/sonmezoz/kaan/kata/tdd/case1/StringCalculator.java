@@ -8,6 +8,12 @@ public class StringCalculator {
             return 0;
         }
 
-        return Integer.parseInt(numbers);
+        String[] numberArray = numbers.split(",");
+
+        if (numberArray.length == 1) {
+            return Integer.parseInt(numberArray[0]);
+        }
+
+        return Integer.parseInt(numberArray[0]) + Integer.parseInt(numberArray[1]);
     }
 }
