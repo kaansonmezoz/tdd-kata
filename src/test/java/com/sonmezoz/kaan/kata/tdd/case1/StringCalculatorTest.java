@@ -3,6 +3,10 @@ package com.sonmezoz.kaan.kata.tdd.case1;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
+import java.util.Arrays;
+import java.util.concurrent.ThreadLocalRandom;
+import java.util.stream.Collectors;
+
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class StringCalculatorTest {
@@ -74,7 +78,7 @@ public class StringCalculatorTest {
     }
 
     @Test
-    void add_shoulReturn_sum_of_three_numbers_when_numbers_passed_with_comma_delimiter() {
+    void add_shouldReturn_sum_of_three_numbers_when_numbers_passed_with_comma_delimiter() {
         // given
         String numbers = "1,2,3";
         int expected = 6;
@@ -84,5 +88,39 @@ public class StringCalculatorTest {
 
         // then
         assertEquals(expected, actual);
+    }
+
+    @Test
+    void add_shouldReturn_sum_of_all_numbers_when_unlimited_amount_of_numbers_passed_with_comma_delimiter() {
+        // given
+        int[] numbers = generateNumbers();
+        int expected =  sum(numbers);
+
+        // when
+        int actual = calculator.add(numbersToString(numbers, ","));
+
+        // then
+        assertEquals(expected, actual);
+    }
+
+    private int[] generateNumbers() {
+        int count = ThreadLocalRandom.current().nextInt(4, 100);
+        int[] numbers = new int[count];
+
+        for(int i = 0; i < count; i++){
+            numbers[i] = ThreadLocalRandom.current().nextInt(0, 1000);
+        }
+
+        return numbers;
+    }
+
+    private int sum(int[] numbers){
+        return Arrays.stream(numbers).sum();
+    }
+
+    private String numbersToString(int[] numbers, String delimiter){
+        return Arrays.stream(numbers)
+                .mapToObj(String::valueOf)
+                .collect(Collectors.joining(delimiter));
     }
 }
