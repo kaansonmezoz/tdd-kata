@@ -16,8 +16,8 @@ public class StringCalculatorTest {
 
     // TODO: 17.07.2020 1) Given empty string as parameter When add() is called Then it should return 0 +
     // TODO: 17.07.2020 2) Given "1"  When add() is called Then it should return 1 +
-    // TODO: 17.07.2020 3) Given "1,2" When add() is called Then it should return 3
-    // TODO: 17.07.2020 4) Given "1,2,3" When add() is called Then it should return 6
+    // TODO: 17.07.2020 3) Given "1,2" When add() is called Then it should return 3 +
+    // TODO: 17.07.2020 4) Given "1,2,3" When add() is called Then it should return 6 +
     // TODO: 17.07.2020 5) Given unlimited amount of numbers When add() is called Then it should return sum of them
     // TODO: 17.07.2020 6) Given "1\n2,3" When add() is called Then it should return 6 and \n is seen as a delimiter 
     // TODO: 17.07.2020 7) Given //[delimiter]\n[numbers…] When add() is called Then it should split via given delimiter in the beginning and return the sum
@@ -65,6 +65,19 @@ public class StringCalculatorTest {
         // given
         String numbers = "1,2";
         int expected = 3;
+
+        // when
+        int actual = calculator.add(numbers);
+
+        // then
+        assertEquals(expected, actual);
+    }
+
+    @Test
+    void add_shoulReturn_sum_of_three_numbers_when_numbers_passed_with_comma_delimiter() {
+        // given
+        String numbers = "1,2,3";
+        int expected = 6;
 
         // when
         int actual = calculator.add(numbers);
