@@ -4,22 +4,25 @@ import org.apache.commons.lang3.StringUtils;
 
 public class StringCalculator {
     public int add(String numbers) {
-        if (StringUtils.isEmpty(numbers)){
+        if (StringUtils.isEmpty(numbers)) {
             return 0;
         }
 
-        String[] numberArray = numbers.split(",");
-        int total = Integer.parseInt(numberArray[0]);
+        return add(numbers.split(","));
+    }
 
-        if (numberArray.length == 1) {
+    private int add(String[] numbers) {
+        int total = Integer.parseInt(numbers[0]);
+
+        if (numbers.length == 1) {
             return total;
         }
 
-        total += Integer.parseInt(numberArray[1]);
-        if (numberArray.length == 2) {
+        total += Integer.parseInt(numbers[1]);
+        if (numbers.length == 2) {
             return total;
         }
 
-        return total + Integer.parseInt(numberArray[2]);
+        return total + Integer.parseInt(numbers[2]);
     }
 }
