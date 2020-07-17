@@ -5,6 +5,7 @@ This Kata is taken from [Roy Osherove](https://osherove.com/tdd-kata-1).
 - Always start with the simplest test case.
 - Red -> Green -> Refactor
 - Don't forget to test after refactor.
+- Always code minimum to pass & fail tests.
 
 
 #### Scenario

@@ -1,8 +1,12 @@
 package com.sonmezoz.kaan.kata.tdd.case1;
 
+import org.junit.jupiter.api.Test;
+
+import static org.junit.jupiter.api.Assertions.assertEquals;
+
 public class StringCalculatorTest {
 
-    // TODO: 17.07.2020 1) Given empty string as parameter When add() is called Then it should return 0
+    // TODO: 17.07.2020 1) Given empty string as parameter When add() is called Then it should return 0 +
     // TODO: 17.07.2020 2) Given "1"  When add() is called Then it should return 1
     // TODO: 17.07.2020 3) Given "1,2" When add() is called Then it should return 3
     // TODO: 17.07.2020 4) Given "1,2,3" When add() is called Then it should return 6
@@ -22,4 +26,17 @@ public class StringCalculatorTest {
     // TODO: 17.07.2020 “//[*][%]\n1*2%3” == 6
     // TODO: 17.07.2020 14) Make sure you can also handle multiple delimiters with length longer than one char
     // TODO: 17.07.2020 “//[**][%%]\n1**2%%3” == 6
+
+    @Test
+    public void add_shouldReturn_0_when_empty_string_passed(){
+        // given
+        StringCalculator calculator = new StringCalculator();
+        String numbers = "";
+
+        // when
+        int actual = calculator.add(numbers);
+
+        // then
+        assertEquals(0, actual);
+    }
 }
