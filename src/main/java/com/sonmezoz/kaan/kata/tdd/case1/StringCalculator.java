@@ -26,7 +26,7 @@ public class StringCalculator {
         return numbers.split("\n")[1];
     }
 
-    private String extractDelimiter(String numbers){
+    private String extractDelimiter(String numbers) {
         return numbers.split("\n")[0].substring(2);
     }
 
@@ -40,6 +40,13 @@ public class StringCalculator {
     }
 
     private int add(String[] numbers) {
-        return Arrays.stream(numbers).mapToInt(Integer::parseInt).sum();
+        int[] array = mapTo(numbers);
+        Arrays.stream(array).filter(i -> i < 0).findFirst().ifPresent((i) -> {  throw new NegativeNumberException(i); });
+
+        return Arrays.stream(array).sum();
+    }
+
+    private int[] mapTo(String[] numbers) {
+        return Arrays.stream(numbers).mapToInt(Integer::parseInt).toArray();
     }
 }
