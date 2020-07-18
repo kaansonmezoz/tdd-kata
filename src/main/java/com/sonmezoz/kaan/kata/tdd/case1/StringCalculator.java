@@ -4,7 +4,7 @@ import org.apache.commons.lang3.StringUtils;
 
 public class StringCalculator {
 
-    public int sum(String numbers) {
+    public int add(String numbers) {
         return StringUtils.isEmpty(numbers) ? 0 : sum(new Numbers(numbers));
     }
 

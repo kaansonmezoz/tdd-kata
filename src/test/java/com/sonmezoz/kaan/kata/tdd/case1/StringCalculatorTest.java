@@ -6,6 +6,7 @@ import org.junit.jupiter.api.Test;
 import java.util.Arrays;
 import java.util.concurrent.ThreadLocalRandom;
 import java.util.stream.Collectors;
+import java.util.stream.IntStream;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
@@ -46,7 +47,7 @@ public class StringCalculatorTest {
         String numbers = "";
 
         // when
-        int actual = calculator.sum(numbers);
+        int actual = calculator.add(numbers);
 
         // then
         assertEquals(0, actual);
@@ -59,7 +60,7 @@ public class StringCalculatorTest {
         int expected = Integer.parseInt(numbers);
 
         // when
-        int actual = calculator.sum(numbers);
+        int actual = calculator.add(numbers);
 
         // then
         assertEquals(expected, actual);
@@ -72,7 +73,7 @@ public class StringCalculatorTest {
         int expected = 3;
 
         // when
-        int actual = calculator.sum(numbers);
+        int actual = calculator.add(numbers);
 
         // then
         assertEquals(expected, actual);
@@ -85,7 +86,7 @@ public class StringCalculatorTest {
         int expected = 6;
 
         // when
-        int actual = calculator.sum(numbers);
+        int actual = calculator.add(numbers);
 
         // then
         assertEquals(expected, actual);
@@ -98,7 +99,7 @@ public class StringCalculatorTest {
         int expected = sum(numbers);
 
         // when
-        int actual = calculator.sum(numbersToString(numbers, ","));
+        int actual = calculator.add(numbersToString(numbers, ","));
 
         // then
         assertEquals(expected, actual);
@@ -111,7 +112,7 @@ public class StringCalculatorTest {
         int expected = 6;
 
         // when
-        int actual = calculator.sum(numbers);
+        int actual = calculator.add(numbers);
 
         // then
         assertEquals(expected, actual);
@@ -124,7 +125,7 @@ public class StringCalculatorTest {
         int expected = 3;
 
         // when
-        int actual = calculator.sum(numbers);
+        int actual = calculator.add(numbers);
 
         // then
         assertEquals(expected, actual);
@@ -136,7 +137,7 @@ public class StringCalculatorTest {
         String numbers = "1,2,3,4,-5,6,7,8";
 
         // when
-        NegativeNumberException e = assertThrows(NegativeNumberException.class, () -> calculator.sum(numbers));
+        NegativeNumberException e = assertThrows(NegativeNumberException.class, () -> calculator.add(numbers));
 
         // then
         assertEquals("negatives not allowed -5", e.getMessage());
@@ -148,10 +149,22 @@ public class StringCalculatorTest {
         String numbers = "1,2,3,4,-5,-6,-7,8,9,10,-11";
 
         // when
-        NegativeNumberException e = assertThrows(NegativeNumberException.class, () -> calculator.sum(numbers));
+        NegativeNumberException e = assertThrows(NegativeNumberException.class, () -> calculator.add(numbers));
 
         // then
         assertEquals("negatives not allowed -5,-6,-7,-11", e.getMessage());
+    }
+
+    @Test
+    void getCalledCount_shouldReturn_how_many_times_add_has_been_invoked() {
+        // given
+        int count = ThreadLocalRandom.current().nextInt(0, 10000);
+
+        // when
+        IntStream.range(0, count).forEach(i -> calculator.add(""));
+
+        // then
+        assertEquals(count, calculator.getCalledCount());
     }
 
     private int[] generateNumbers() {
