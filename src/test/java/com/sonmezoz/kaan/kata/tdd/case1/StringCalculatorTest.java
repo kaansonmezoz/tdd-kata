@@ -23,7 +23,7 @@ public class StringCalculatorTest {
     // TODO: 17.07.2020 3) Given "1,2" When add() is called Then it should return 3 +
     // TODO: 17.07.2020 4) Given "1,2,3" When add() is called Then it should return 6 +
     // TODO: 17.07.2020 5) Given unlimited amount of numbers When add() is called Then it should return sum of them +
-    // TODO: 17.07.2020 6) Given "1\n2,3" When add() is called Then it should return 6 and \n is seen as a delimiter 
+    // TODO: 17.07.2020 6) Given "1\n2,3" When add() is called Then it should return 6 and \n is seen as a delimiter +
     // TODO: 17.07.2020 7) Given //[delimiter]\n[numbers…] When add() is called Then it should split via given delimiter in the beginning and return the sum
     // TODO: 17.07.2020 “//;\n1;2” == 3  delimiter is ';'
     // TODO: 17.07.2020 8) Given negative numbers When add() is called Then it should throw an exception with message: “negatives not allowed [negative-number]"

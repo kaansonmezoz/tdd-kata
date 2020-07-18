@@ -5,12 +5,13 @@ import org.apache.commons.lang3.StringUtils;
 import java.util.Arrays;
 
 public class StringCalculator {
+
     public int add(String numbers) {
         if (StringUtils.isEmpty(numbers)) {
             return 0;
         }
 
-        return add(numbers.split(","));
+        return add(numbers.split(",|\n"));
     }
 
     private int add(String[] numbers) {
