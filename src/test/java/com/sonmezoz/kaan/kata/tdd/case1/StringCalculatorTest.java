@@ -30,7 +30,7 @@ public class StringCalculatorTest {
     // TODO: 17.07.2020 “//;\n1;2” == 3  delimiter is ';'
     // TODO: 17.07.2020 8) Given negative numbers When add() is called Then it should throw an exception with message: “negatives not allowed [negative-number]" +
     // TODO: 17.07.2020 9) Given multiple negative numbers When add() is called Then it should throw an exception and show all the values in the message +
-    // TODO: 17.07.2020 10) Given add() is called for multiple times, When getCalledCount() is invoked Then it should return how many times add() has been called
+    // TODO: 17.07.2020 10) Given add() is called for multiple times, When getCalledCount() is invoked Then it should return how many times add() has been called +
     // TODO: 17.07.2020 11) Given Numbers bigger than 1000 should be ignored. 
     // TODO: 17.07.2020 12) Delimiters can be of any length with the following format 
     // TODO: 17.07.2020 “//[delimiter]\n”
