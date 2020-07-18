@@ -5,24 +5,38 @@ import org.apache.commons.lang3.StringUtils;
 import java.util.Arrays;
 
 public class StringCalculator {
-    private final String COMMA_OR_NEWLINE_REGEX = ",|\n";
+    private final String COMMA_OR_NEWLINE = "[,\n]";
 
     public int add(String numbers) {
         if (StringUtils.isEmpty(numbers)) {
             return 0;
         }
 
-        if (numbers.startsWith("//")) {
-            String[] lines = numbers.split("\n");
-            String delimiter = lines[0].substring(2);
-            return add(lines[1].split(delimiter));
+        String delimiter = COMMA_OR_NEWLINE;
+
+        if (hasCustomDelimiter(numbers)) {
+            delimiter = extractDelimiter(numbers);
+            numbers = extractNumbers(numbers);
         }
 
-        return add(split(numbers));
+        return add(split(numbers, delimiter));
     }
 
-    private String[] split(String numbers) {
-        return numbers.split(COMMA_OR_NEWLINE_REGEX);
+    private String extractNumbers(String numbers) {
+        return numbers.split("\n")[1];
+    }
+
+    private String extractDelimiter(String numbers){
+        return numbers.split("\n")[0].substring(2);
+    }
+
+    private boolean hasCustomDelimiter(String numbers) {
+        return numbers.startsWith("//");
+    }
+
+
+    private String[] split(String numbers, String delimiter) {
+        return numbers.split(delimiter);
     }
 
     private int add(String[] numbers) {
