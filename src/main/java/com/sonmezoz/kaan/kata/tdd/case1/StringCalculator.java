@@ -5,13 +5,18 @@ import org.apache.commons.lang3.StringUtils;
 import java.util.Arrays;
 
 public class StringCalculator {
+    private final String COMMA_OR_NEWLINE_REGEX = ",|\n";
 
     public int add(String numbers) {
         if (StringUtils.isEmpty(numbers)) {
             return 0;
         }
 
-        return add(numbers.split(",|\n"));
+        return add(split(numbers));
+    }
+
+    private String[] split(String numbers) {
+        return numbers.split(COMMA_OR_NEWLINE_REGEX);
     }
 
     private int add(String[] numbers) {
