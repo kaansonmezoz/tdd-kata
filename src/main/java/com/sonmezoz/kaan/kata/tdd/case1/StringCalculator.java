@@ -9,8 +9,8 @@ public class StringCalculator {
     }
 
     private int sum(Numbers numbers) {
-        if (numbers.containsNegativeNumbers()){
-            throw new NegativeNumberException(numbers.getNegativeNumbers());
+        if (numbers.containsNegative()){
+            throw new NegativeNumberException(numbers.getNegatives());
         }
 
         return numbers.sum();

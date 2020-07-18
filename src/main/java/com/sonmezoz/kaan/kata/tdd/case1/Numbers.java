@@ -38,11 +38,11 @@ class Numbers {
                 .toArray();
     }
 
-    boolean containsNegativeNumbers() {
+    boolean containsNegative() {
         return Arrays.stream(values).anyMatch( v -> v < 0);
     }
 
-    List<Integer> getNegativeNumbers() {
+    List<Integer> getNegatives() {
         return Arrays.stream(values)
                 .filter(n -> n < 0)
                 .boxed()
