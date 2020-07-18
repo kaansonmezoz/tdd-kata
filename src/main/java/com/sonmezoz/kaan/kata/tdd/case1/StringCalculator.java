@@ -19,7 +19,7 @@ public class StringCalculator {
 
         int sum = sum(new Numbers(numbers));
 
-        return sum > 1000 ? 1000: sum;
+        return Math.min(sum, 1000);
     }
 
     private int sum(Numbers numbers) {
