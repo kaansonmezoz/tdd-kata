@@ -3,7 +3,6 @@ package com.sonmezoz.kaan.kata.tdd.case1;
 import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
-import java.util.stream.IntStream;
 
 class Numbers {
     private static final String COMMA_OR_NEWLINE = "[,\n]";
@@ -50,7 +49,7 @@ class Numbers {
                 .collect(Collectors.toList());
     }
 
-    IntStream getNumbersStream() {
-        return Arrays.stream(values);
+    int sum() {
+        return Arrays.stream(values).sum();
     }
 }

@@ -13,6 +13,6 @@ public class StringCalculator {
             throw new NegativeNumberException(numbers.getNegativeNumbers());
         }
 
-        return numbers.getNumbersStream().sum();
+        return numbers.sum();
     }
 }
