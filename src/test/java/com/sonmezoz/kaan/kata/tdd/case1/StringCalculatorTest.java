@@ -8,6 +8,7 @@ import java.util.concurrent.ThreadLocalRandom;
 import java.util.stream.Collectors;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 
 public class StringCalculatorTest {
     private StringCalculator calculator;
@@ -127,6 +128,17 @@ public class StringCalculatorTest {
 
         // then
         assertEquals(expected, actual);
+    }
+
+    void add_shouldThrow_NegativeNumberException_print_message_with_negative_number() {
+        // given
+        String numbers = "1,2,3,4,-5,6,7,8";
+
+        // when
+        NegativeNumberException e = assertThrows(NegativeNumberException.class, () -> calculator.add(numbers));
+
+        // then
+        assertEquals("negatives not allowed -5", e.getMessage());
     }
 
     private int[] generateNumbers() {
