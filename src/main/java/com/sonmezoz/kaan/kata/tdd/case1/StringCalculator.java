@@ -12,6 +12,12 @@ public class StringCalculator {
             return 0;
         }
 
+        if (numbers.startsWith("//")) {
+            String[] lines = numbers.split("\n");
+            String delimiter = lines[0].substring(2);
+            return add(lines[1].split(delimiter));
+        }
+
         return add(split(numbers));
     }
 

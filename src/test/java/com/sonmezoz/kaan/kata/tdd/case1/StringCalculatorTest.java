@@ -94,7 +94,7 @@ public class StringCalculatorTest {
     void add_shouldReturn_sum_of_all_numbers_when_unlimited_amount_of_numbers_passed_with_comma_delimiter() {
         // given
         int[] numbers = generateNumbers();
-        int expected =  sum(numbers);
+        int expected = sum(numbers);
 
         // when
         int actual = calculator.add(numbersToString(numbers, ","));
@@ -104,10 +104,23 @@ public class StringCalculatorTest {
     }
 
     @Test
-    void add_shouldReturn_sum_of_numbers_when_numbers_passed_with_comma_and_newline_delimiter(){
+    void add_shouldReturn_sum_of_numbers_when_numbers_passed_with_comma_and_newline_delimiter() {
         // given
         String numbers = "1\n2,3";
         int expected = 6;
+
+        // when
+        int actual = calculator.add(numbers);
+
+        // then
+        assertEquals(expected, actual);
+    }
+
+    @Test
+    void add_shouldReturn_sum_of_numbers_when_numbers_passed_with_delimiter_char_at_the_beginning() {
+        // given
+        String numbers = "//;\n1;2";
+        int expected = 3;
 
         // when
         int actual = calculator.add(numbers);
@@ -120,18 +133,18 @@ public class StringCalculatorTest {
         int count = ThreadLocalRandom.current().nextInt(4, 100);
         int[] numbers = new int[count];
 
-        for(int i = 0; i < count; i++){
+        for (int i = 0; i < count; i++) {
             numbers[i] = ThreadLocalRandom.current().nextInt(0, 1000);
         }
 
         return numbers;
     }
 
-    private int sum(int[] numbers){
+    private int sum(int[] numbers) {
         return Arrays.stream(numbers).sum();
     }
 
-    private String numbersToString(int[] numbers, String delimiter){
+    private String numbersToString(int[] numbers, String delimiter) {
         return Arrays.stream(numbers)
                 .mapToObj(String::valueOf)
                 .collect(Collectors.joining(delimiter));
