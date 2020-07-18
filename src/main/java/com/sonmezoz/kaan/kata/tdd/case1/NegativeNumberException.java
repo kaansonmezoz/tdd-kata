@@ -1,9 +1,13 @@
 package com.sonmezoz.kaan.kata.tdd.case1;
 
-public class NegativeNumberException extends IllegalArgumentException {
-    private static final String MESSAGE_TEMPLATE = "negatives not allowed %d";
+import org.apache.commons.lang3.StringUtils;
 
-    NegativeNumberException(int negativeNumber) {
-        super(String.format(MESSAGE_TEMPLATE, negativeNumber));
+import java.util.List;
+
+public class NegativeNumberException extends IllegalArgumentException {
+    private static final String MESSAGE_TEMPLATE = "negatives not allowed %s";
+
+    NegativeNumberException(List<Integer> negativeNumbers) {
+        super(String.format(MESSAGE_TEMPLATE, StringUtils.join(negativeNumbers, ",")));
     }
 }

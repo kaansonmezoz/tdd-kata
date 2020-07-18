@@ -1,7 +1,8 @@
 package com.sonmezoz.kaan.kata.tdd.case1;
 
 import java.util.Arrays;
-import java.util.OptionalInt;
+import java.util.List;
+import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
 class Numbers {
@@ -38,8 +39,15 @@ class Numbers {
                 .toArray();
     }
 
-    OptionalInt getNegativeNumber() {
-        return Arrays.stream(values).filter(n -> n < 0).findFirst();
+    boolean containsNegativeNumbers() {
+        return Arrays.stream(values).anyMatch( v -> v < 0);
+    }
+
+    List<Integer> getNegativeNumbers() {
+        return Arrays.stream(values)
+                .filter(n -> n < 0)
+                .boxed()
+                .collect(Collectors.toList());
     }
 
     IntStream getNumbersStream() {

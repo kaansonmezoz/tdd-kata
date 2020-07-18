@@ -28,7 +28,7 @@ public class StringCalculatorTest {
     // TODO: 17.07.2020 7) Given //[delimiter]\n[numbers…] When add() is called Then it should split via given delimiter in the beginning and return the sum +
     // TODO: 17.07.2020 “//;\n1;2” == 3  delimiter is ';'
     // TODO: 17.07.2020 8) Given negative numbers When add() is called Then it should throw an exception with message: “negatives not allowed [negative-number]" +
-    // TODO: 17.07.2020 9) Given multiple negative numbers When add() is called Then it should throw an exception and show all the values in the message
+    // TODO: 17.07.2020 9) Given multiple negative numbers When add() is called Then it should throw an exception and show all the values in the message +
     // TODO: 17.07.2020 10) Given add() is called for multiple times, When getCalledCount() is invoked Then it should return how many times add() has been called
     // TODO: 17.07.2020 11) Given Numbers bigger than 1000 should be ignored. 
     // TODO: 17.07.2020 12) Delimiters can be of any length with the following format 
@@ -46,7 +46,7 @@ public class StringCalculatorTest {
         String numbers = "";
 
         // when
-        int actual = calculator.add(numbers);
+        int actual = calculator.sum(numbers);
 
         // then
         assertEquals(0, actual);
@@ -59,7 +59,7 @@ public class StringCalculatorTest {
         int expected = Integer.parseInt(numbers);
 
         // when
-        int actual = calculator.add(numbers);
+        int actual = calculator.sum(numbers);
 
         // then
         assertEquals(expected, actual);
@@ -72,7 +72,7 @@ public class StringCalculatorTest {
         int expected = 3;
 
         // when
-        int actual = calculator.add(numbers);
+        int actual = calculator.sum(numbers);
 
         // then
         assertEquals(expected, actual);
@@ -85,7 +85,7 @@ public class StringCalculatorTest {
         int expected = 6;
 
         // when
-        int actual = calculator.add(numbers);
+        int actual = calculator.sum(numbers);
 
         // then
         assertEquals(expected, actual);
@@ -98,7 +98,7 @@ public class StringCalculatorTest {
         int expected = sum(numbers);
 
         // when
-        int actual = calculator.add(numbersToString(numbers, ","));
+        int actual = calculator.sum(numbersToString(numbers, ","));
 
         // then
         assertEquals(expected, actual);
@@ -111,7 +111,7 @@ public class StringCalculatorTest {
         int expected = 6;
 
         // when
-        int actual = calculator.add(numbers);
+        int actual = calculator.sum(numbers);
 
         // then
         assertEquals(expected, actual);
@@ -124,21 +124,34 @@ public class StringCalculatorTest {
         int expected = 3;
 
         // when
-        int actual = calculator.add(numbers);
+        int actual = calculator.sum(numbers);
 
         // then
         assertEquals(expected, actual);
     }
 
-    void add_shouldThrow_NegativeNumberException_print_message_with_negative_number() {
+    @Test
+    void add_shouldThrow_NegativeNumberException_message_with_negative_number() {
         // given
         String numbers = "1,2,3,4,-5,6,7,8";
 
         // when
-        NegativeNumberException e = assertThrows(NegativeNumberException.class, () -> calculator.add(numbers));
+        NegativeNumberException e = assertThrows(NegativeNumberException.class, () -> calculator.sum(numbers));
 
         // then
         assertEquals("negatives not allowed -5", e.getMessage());
+    }
+
+    @Test
+    void add_shouldThrow_NegativeNumberException_message_with_all_negative_numbers() {
+        // given
+        String numbers = "1,2,3,4,-5,-6,-7,8,9,10,-11";
+
+        // when
+        NegativeNumberException e = assertThrows(NegativeNumberException.class, () -> calculator.sum(numbers));
+
+        // then
+        assertEquals("negatives not allowed -5,-6,-7,-11", e.getMessage());
     }
 
     private int[] generateNumbers() {
