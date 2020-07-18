@@ -31,7 +31,7 @@ public class StringCalculatorTest {
     // TODO: 17.07.2020 8) Given negative numbers When add() is called Then it should throw an exception with message: “negatives not allowed [negative-number]" +
     // TODO: 17.07.2020 9) Given multiple negative numbers When add() is called Then it should throw an exception and show all the values in the message +
     // TODO: 17.07.2020 10) Given add() is called for multiple times, When getCalledCount() is invoked Then it should return how many times add() has been called +
-    // TODO: 17.07.2020 11) Given Numbers bigger than 1000 should be ignored. 
+    // TODO: 17.07.2020 11) Given Numbers bigger than 1000 should be ignored. +
     // TODO: 17.07.2020 12) Delimiters can be of any length with the following format 
     // TODO: 17.07.2020 “//[delimiter]\n”
     // TODO: 17.07.2020 “//[***]\n1***2***3” = 6
@@ -97,6 +97,7 @@ public class StringCalculatorTest {
         // given
         int[] numbers = generateNumbers();
         int expected = sum(numbers);
+        expected = expected > 1000 ? 1000 : expected;
 
         // when
         int actual = calculator.add(numbersToString(numbers, ","));
@@ -165,6 +166,19 @@ public class StringCalculatorTest {
 
         // then
         assertEquals(count, calculator.getCalledCount());
+    }
+
+    @Test
+    void add_shouldReturn_1000_when_sum_of_numbers_is_greater_than_1000() {
+        // given
+        String numbers = "1000,2000,3000";
+        int expected = 1000;
+
+        // when
+        int actual = calculator.add(numbers);
+
+        // then
+        assertEquals(expected, actual);
     }
 
     private int[] generateNumbers() {

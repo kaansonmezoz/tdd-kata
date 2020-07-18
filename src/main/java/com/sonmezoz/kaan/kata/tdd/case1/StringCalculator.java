@@ -13,7 +13,13 @@ public class StringCalculator {
     public int add(String numbers) {
         calledCount++;
 
-        return StringUtils.isEmpty(numbers) ? 0 : sum(new Numbers(numbers));
+        if(StringUtils.isEmpty(numbers)) {
+            return 0;
+        }
+
+        int sum = sum(new Numbers(numbers));
+
+        return sum > 1000 ? 1000: sum;
     }
 
     private int sum(Numbers numbers) {
