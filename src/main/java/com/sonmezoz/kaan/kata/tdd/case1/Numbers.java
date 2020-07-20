@@ -27,14 +27,14 @@ class Numbers {
 
     private String extractDelimiter(String numbers) {
         String[] s = numbers.split("\n")[0].split("]");
-
-        if (s.length == 1) {
-            return isSingleCharacter(s[0]) ? s[0].substring(2) : Pattern.quote(s[0].substring(3, s[0].length()));
-        }
-
         s[0] = s[0].replace("//", "");
 
-        return "[" + Arrays.stream(s).map(str -> str.replace("[", "")).collect(Collectors.joining(",")) + "]";
+        if (s.length == 1) {
+            return Pattern.quote(s[0].replace("[",""));
+        }
+
+        return Arrays.stream(s).map(str -> Pattern.quote(str.replace("[", "")))
+                .collect(Collectors.joining("|"));
     }
 
     private boolean isSingleCharacter(String s) {

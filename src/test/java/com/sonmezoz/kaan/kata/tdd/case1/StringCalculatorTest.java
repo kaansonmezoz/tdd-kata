@@ -34,10 +34,10 @@ public class StringCalculatorTest {
     // TODO: 17.07.2020 11) Given Numbers bigger than 1000 should be ignored. +
     // TODO: 17.07.2020 12) Delimiters can be of any length with the following format  +
     // TODO: 17.07.2020 “//[delimiter]\n”
-    // TODO: 17.07.2020 “//[***]\n1***2***3” = 6
+    // TODO: 17.07.2020 “//[***]\n1***2***3” = 6 +
     // TODO: 17.07.2020 13) Allow multiple delimeters like this
     // TODO: 17.07.2020 “//[delim1][delim2]\n”
-    // TODO: 17.07.2020 “//[*][%]\n1*2%3” == 6
+    // TODO: 17.07.2020 “//[*][%]\n1*2%3” == 6 +
     // TODO: 17.07.2020 14) Make sure you can also handle multiple delimiters with length longer than one char
     // TODO: 17.07.2020 “//[**][%%]\n1**2%%3” == 6
 
@@ -206,6 +206,20 @@ public class StringCalculatorTest {
         // then
         assertEquals(expected, actual);
     }
+
+    @Test
+    void add_shouldReturn_sum_of_numbers_when_given_multiple_delimiters_with_unlimited_length(){
+        // given
+        String numbers = "//[**][%%]\n1**2%%3";
+        int expected = 6;
+
+        // when
+        int actual = calculator.add(numbers);
+
+        // then
+        assertEquals(expected, actual);
+    }
+
 
     private int[] generateNumbers() {
         int count = ThreadLocalRandom.current().nextInt(4, 100);
