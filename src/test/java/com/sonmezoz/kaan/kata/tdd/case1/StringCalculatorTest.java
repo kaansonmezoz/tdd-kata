@@ -194,6 +194,19 @@ public class StringCalculatorTest {
         assertEquals(expected, actual);
     }
 
+    @Test
+    void add_shouldReturn_sum_of_numbers_when_given_multiple_delimiters_1_char_long(){
+        // given
+        String numbers = "//[*][%]\n1*2%3";
+        int expected = 6;
+
+        // when
+        int actual = calculator.add(numbers);
+
+        // then
+        assertEquals(expected, actual);
+    }
+
     private int[] generateNumbers() {
         int count = ThreadLocalRandom.current().nextInt(4, 100);
         int[] numbers = new int[count];

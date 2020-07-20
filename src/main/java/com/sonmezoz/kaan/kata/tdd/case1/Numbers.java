@@ -26,9 +26,19 @@ class Numbers {
     }
 
     private String extractDelimiter(String numbers) {
-        String s = numbers.split("\n")[0];
-        int length = s.length();
-        return length == 3 ? s.substring(2) : Pattern.quote(s.substring(3, length-1));
+        String[] s = numbers.split("\n")[0].split("]");
+
+        if (s.length == 1) {
+            return isSingleCharacter(s[0]) ? s[0].substring(2) : Pattern.quote(s[0].substring(3, s[0].length()));
+        }
+
+        s[0] = s[0].replace("//", "");
+
+        return "[" + Arrays.stream(s).map(str -> str.replace("[", "")).collect(Collectors.joining(",")) + "]";
+    }
+
+    private boolean isSingleCharacter(String s) {
+        return s.length() == 3;
     }
 
     private String extractNumbers(String numbers) {
@@ -42,7 +52,7 @@ class Numbers {
     }
 
     boolean containsNegative() {
-        return Arrays.stream(values).anyMatch( v -> v < 0);
+        return Arrays.stream(values).anyMatch(v -> v < 0);
     }
 
     List<Integer> getNegatives() {
