@@ -32,7 +32,7 @@ public class StringCalculatorTest {
     // TODO: 17.07.2020 9) Given multiple negative numbers When add() is called Then it should throw an exception and show all the values in the message +
     // TODO: 17.07.2020 10) Given add() is called for multiple times, When getCalledCount() is invoked Then it should return how many times add() has been called +
     // TODO: 17.07.2020 11) Given Numbers bigger than 1000 should be ignored. +
-    // TODO: 17.07.2020 12) Delimiters can be of any length with the following format 
+    // TODO: 17.07.2020 12) Delimiters can be of any length with the following format  +
     // TODO: 17.07.2020 “//[delimiter]\n”
     // TODO: 17.07.2020 “//[***]\n1***2***3” = 6
     // TODO: 17.07.2020 13) Allow multiple delimeters like this
@@ -173,6 +173,19 @@ public class StringCalculatorTest {
         // given
         String numbers = "1000,2000,3000";
         int expected = 1000;
+
+        // when
+        int actual = calculator.add(numbers);
+
+        // then
+        assertEquals(expected, actual);
+    }
+
+    @Test
+    void add_shouldReturn_sum_of_numbers_when_given_delimiter_can_be_any_length(){
+        // given
+        String numbers = "//[***]\n1***2***3";
+        int expected = 6;
 
         // when
         int actual = calculator.add(numbers);

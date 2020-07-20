@@ -2,6 +2,7 @@ package com.sonmezoz.kaan.kata.tdd.case1;
 
 import java.util.Arrays;
 import java.util.List;
+import java.util.regex.Pattern;
 import java.util.stream.Collectors;
 
 class Numbers {
@@ -25,7 +26,9 @@ class Numbers {
     }
 
     private String extractDelimiter(String numbers) {
-        return numbers.split("\n")[0].substring(2);
+        String s = numbers.split("\n")[0];
+        int length = s.length();
+        return length == 3 ? s.substring(2) : Pattern.quote(s.substring(3, length-1));
     }
 
     private String extractNumbers(String numbers) {
