@@ -26,19 +26,12 @@ class Numbers {
     }
 
     private String extractDelimiter(String numbers) {
-        String[] s = numbers.split("\n")[0].split("]");
-        s[0] = s[0].replace("//", "");
+        String[] s = numbers.split("\n")[0]
+                .replace("[", "")
+                .replace("//", "")
+                .split("]");
 
-        if (s.length == 1) {
-            return Pattern.quote(s[0].replace("[",""));
-        }
-
-        return Arrays.stream(s).map(str -> Pattern.quote(str.replace("[", "")))
-                .collect(Collectors.joining("|"));
-    }
-
-    private boolean isSingleCharacter(String s) {
-        return s.length() == 3;
+        return Arrays.stream(s).map(Pattern::quote).collect(Collectors.joining("|"));
     }
 
     private String extractNumbers(String numbers) {
