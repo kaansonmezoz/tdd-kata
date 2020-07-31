@@ -7,4 +7,4 @@ It can be thought as a collection of TDD kata with its solutions.
 
 * String Calculator Kata
   * [Test](https://github.com/kaansonmezoz/tdd-kata/tree/master/src/test/java/com/sonmezoz/kaan/kata/tdd/case1)
-  * [Solution]((https://github.com/kaansonmezoz/tdd-kata/tree/master/src/main/java/com/sonmezoz/kaan/kata/tdd/case1)) 
+  * [Solution](https://github.com/kaansonmezoz/tdd-kata/tree/master/src/main/java/com/sonmezoz/kaan/kata/tdd/case1)
